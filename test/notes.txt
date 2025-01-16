@@ -1,0 +1,15 @@
+##Analyze pdf using OLLaMA##
+# brew install poppler
+
+#extract elements from the pdf:
+pdftotext documento.pdf output.txt
+
+#analize pdf using LLaMA
+ollama run llama2 < output.txt
+
+#ALL IN ONE LINE:
+pdftotext documento.pdf - | ollama run llama2
+
+#With specific promt:
+echo "Riassumi il seguente testo:\n$(pdftotext documento.pdf -)" | ollama run llama2
+
